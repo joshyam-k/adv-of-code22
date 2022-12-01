@@ -11,6 +11,7 @@ input_list <- input %>%
   group_by(flag) %>% 
   group_split()
 
+
 select_and_add <- function(.x){
   .x %>% 
     select(x) %>% 
@@ -18,8 +19,15 @@ select_and_add <- function(.x){
     pull(sum)
 }
 
-input_list %>% 
-  map_dbl(.f = select_and_add) %>% 
-  max()
+elf_sums <- input_list %>% 
+  map_dbl(.f = select_and_add) 
+
+tibble(
+  calories = elf_sums
+) %>% 
+  arrange(desc(calories)) %>% 
+  head(3)
+
+
 
 
