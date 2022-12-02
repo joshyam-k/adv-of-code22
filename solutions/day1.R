@@ -1,7 +1,7 @@
 library(tidyverse)
 library(here)
 
-input <- tibble(x = readLines(here("day1.txt")))
+input <- tibble(x = readLines(here("inputs", "day1.txt")))
 
 input_list <- input %>% 
   mutate(flag = ifelse(x == "", row_number(), NA)) %>% 
